@@ -11,7 +11,7 @@ int main()
 {
 	Enigma enigma;
 
-	string msgToCode = "Hallo";
+	string msgToCode = "HelloWorld";
 
 
 	string black_msg = enigma.codeMsg(msgToCode);

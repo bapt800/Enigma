@@ -44,6 +44,18 @@ char Enigma::jumpInRotor(char* rotor, char* c)
 	return rotor[get_alphabet_index(*c)];
 }
 
+char Enigma::inv_jumpInRotor(char* rotor, char* c)
+{
+
+	for (int index = 0; index < 26; index++)
+	{
+		if (rotor[index] == *c)
+		{
+			return _alphabet[index];
+		}
+	}
+}
+
 std::string Enigma::codeMsg(std::string clear_msg)
 {
 	std::string msg_black;
@@ -69,21 +81,21 @@ std::string Enigma::codeMsg(std::string clear_msg)
 std::string Enigma::decodeMsg(std::string black_msg)
 {
 	std::string msg_clear;
-	char* inv_table_rotors[] = { _rotor1,_rotor2 };
+	char* inv_table_rotors[] = { _rotor2 ,_rotor1 };
 
 	for (unsigned int index_msg = 0; index_msg < black_msg.size(); index_msg++)
 	{
 
-		char char_toCode = black_msg.at(index_msg);
+		char char_toRestore = black_msg.at(index_msg);
 
 		for (int index_rotor = 0; index_rotor < 2; index_rotor++)
 		{
 			char* rotor = inv_table_rotors[index_rotor];
 
-			char_toCode = jumpInRotor(rotor, &char_toCode);
+			char_toRestore = inv_jumpInRotor(rotor, &char_toRestore);
 		}
 
-		msg_clear.push_back(char_toCode);
+		msg_clear.push_back(char_toRestore);
 	}
 	return msg_clear;
 }
@@ -113,10 +125,5 @@ int Enigma::get_alphabet_index(char c)
 	}
 }
 
-void Enigma::cout_rotors()
-{
-	std::cout << "rotor 1 a la sortie:" << _Rotors.rotor1 << "\n";
-	std::cout << _Rotors.rotor2 << "\n";
-}
 
 
