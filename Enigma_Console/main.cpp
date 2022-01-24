@@ -15,8 +15,12 @@ int main()
 
 
 	string black_msg = enigma.codeMsg(msgToCode);
-	cout << "\n\nbase msg: " <<msgToCode << "\nblack msg: " << black_msg;
-	cout << "\n\nblack msg: " << black_msg << "\nclear msg: " << enigma.decodeMsg(black_msg);
+	cout << "\n\nbase msg: " <<msgToCode << "    black msg: " << black_msg;
+	cout << "\nblack msg: " << black_msg << "    clear msg: " << enigma.decodeMsg(black_msg);
+
+	black_msg = enigma.enigma_code(msgToCode);
+	cout << "\n\nbase msg: " << msgToCode << "    black msg: " << black_msg;
+	cout << endl;
 
 
 	return 0;
