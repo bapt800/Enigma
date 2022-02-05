@@ -20,6 +20,7 @@ int main()
 
 	black_msg = enigma.enigma_code(msgToCode);
 	cout << "\n\nbase msg: " << msgToCode << "    black msg: " << black_msg;
+	cout << "\nblack msg: " << black_msg << "    clear msg: " << enigma.enigma_decode(black_msg);
 	cout << endl;
 
 

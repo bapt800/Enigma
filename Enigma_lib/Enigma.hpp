@@ -23,6 +23,9 @@ public:
 	std::string decodeMsg(std::string black_msg);
 
 	std::string enigma_code(std::string clear_msg);
+	std::string enigma_decode(std::string black_msg);
+
+    char* get_rotors();
 
 	static unsigned int gen_randomNumber();
 	static int get_alphabet_index(char c); //not by me

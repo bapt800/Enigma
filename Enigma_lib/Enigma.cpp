@@ -55,6 +55,7 @@ char Enigma::inv_jumpInRotor(char* rotor, char* c)
 			return _alphabet[index];
 		}
 	}
+    return (char)'A';
 }
 
 std::string Enigma::codeMsg(std::string clear_msg)
@@ -122,7 +123,39 @@ std::string Enigma::enigma_code(std::string clear_msg)
 		msg_black.push_back(char_toCode);
 		rotor_poss++;
 	}
+	rotor_poss = 0; //reset pos, if we use  Enigma::codeMsg after this fx
 	return msg_black;
+}
+
+std::string Enigma::enigma_decode(std::string black_msg)
+{
+	std::string msg_clear;
+	char* inv_table_rotors[] = { _rotor2 ,_rotor1 };
+	rotor_poss = black_msg.size()-1;
+
+	for (unsigned int index_msg = 0; index_msg < black_msg.size(); index_msg++)
+	{
+
+		char char_toRestore = black_msg.at(index_msg);
+
+		for (int index_rotor = 0; index_rotor < 2; index_rotor++)
+		{
+			char* rotor = inv_table_rotors[index_rotor];
+
+			char_toRestore = inv_jumpInRotor(rotor, &char_toRestore);
+		}
+
+		msg_clear.push_back(char_toRestore);
+		rotor_poss--;
+	}
+	rotor_poss = 0;
+	return msg_clear;
+}
+
+char* Enigma::get_rotors()
+{
+    char* table_rotors[] = { _rotor2 ,_rotor1 };
+    return *table_rotors;
 }
 
 unsigned int Enigma::gen_randomNumber()
