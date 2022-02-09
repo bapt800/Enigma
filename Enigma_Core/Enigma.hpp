@@ -8,6 +8,7 @@
 
 
 int get_alphabet_index(char c);
+std::string clean_text_input(std::string input);
 
 struct rotor
 {
@@ -69,7 +70,7 @@ public:
     std::string code(std::string msg);
     std::string decode(std::string msg);
 
-    void set_rotors_settings(struct rotors_Settings settings); //next step
+    void set_rotors_settings(struct rotors_Settings settings);
 
 	static unsigned int gen_randomNumber();
     unsigned int get_index_rotor(char letter, rotor rotor);

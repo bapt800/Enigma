@@ -99,6 +99,7 @@ char Enigma::inv_jump_rotor_reverse_static(char letter)
 
 std::string Enigma::code(std::string msg)
 {
+    msg = clean_text_input(msg);
     std::string msg_Return;
     for (int i =0; i<msg.size(); i++)
     {
@@ -109,6 +110,7 @@ std::string Enigma::code(std::string msg)
 
 std::string Enigma::decode(std::string msg)
 {
+    msg = clean_text_input(msg);
     rotor1.index = rotors_settings._rotor1_index;
     rotor2.index = rotors_settings._rotor2_index;
     rotor3.index = rotors_settings._rotor3_index;
@@ -166,4 +168,19 @@ unsigned int Enigma::get_index_rotor(char letter, rotor rotor)
 
 
 
+std::string clean_text_input(std::string input)
+{
+    std::string cleanUp;
+    for (int i=0; i<input.size(); i++)
+    {
+        if(input.at(i) == ' ' || input.at(i) == '.')
+        {
 
+        }
+        else
+        {
+            cleanUp.push_back(input.at(i));
+        }
+    }
+    return cleanUp;
+}
