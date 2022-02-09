@@ -15,14 +15,14 @@ Widget::Widget(QWidget *parent)
     rotor2->setText(alphabet);
 
     input_user = new QLineEdit;
-    //input_user->
+    mainLayout->addWidget(input_user, 1, 0);
 
 
     DEBUG_button_update = new QPushButton;
     connect(DEBUG_button_update, &QPushButton::pressed, this, &Widget::update_ui_rotor);
     DEBUG_button_update->setText(QString("update rotor"));
     mainLayout->addWidget(DEBUG_button_update, 2, 0);
-    //update_ui_rotor();
+    update_ui_rotor();
 }
 
 Widget::~Widget()
@@ -32,7 +32,7 @@ Widget::~Widget()
 void Widget::update_ui_rotor()
 {
     QLabel* table_label_rotors[] = {rotor1, rotor2};
-    char* table_rotors = enigma.get_rotors();
+    char* table_rotors;
 
 
     for (int i = 0; i < 2; i++) {
