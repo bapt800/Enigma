@@ -6,6 +6,6 @@ cmake_minimum_required (VERSION 3.8)
 project ("Enigma_Core")
 
 # Ajoutez une source à l'exécutable de ce projet.
-add_executable (Enigma_Core "main.cpp" "main.hpp" "Enigma.hpp" "Enigma.cpp" "turing.h" "turing.cpp")
+add_executable (Enigma_Core "main.cpp" "main.hpp" "Enigma.hpp" "Enigma.cpp" "turing.hpp" "turing.cpp")
 
 # TODO: Ajoutez des tests et installez des cibles si nécessaire.
