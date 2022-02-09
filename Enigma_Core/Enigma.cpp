@@ -22,6 +22,11 @@ Enigma::Enigma()
 
 }
 
+Enigma::Enigma(rotors_Settings settings)
+{
+    set_rotors_settings(settings);
+}
+
 Enigma::~Enigma()
 {
 }
@@ -104,9 +109,9 @@ std::string Enigma::code(std::string msg)
 
 std::string Enigma::decode(std::string msg)
 {
-    rotor1.index = 0;
-    rotor2.index = 0;
-    rotor3.index = 0;
+    rotor1.index = rotors_settings._rotor1_index;
+    rotor2.index = rotors_settings._rotor2_index;
+    rotor3.index = rotors_settings._rotor3_index;
 
     std::string msg_Return;
     for (int i =0; i<msg.size(); i++)
@@ -118,6 +123,17 @@ std::string Enigma::decode(std::string msg)
         msg_Return.push_back(c);
     }
     return msg_Return;
+}
+
+void Enigma::set_rotors_settings(rotors_Settings settings)
+{
+    rotors_settings = settings;
+    rotor1.table = rotors_settings._rotor1_table;
+    rotor1.index = rotors_settings._rotor1_index;
+    rotor2.table = rotors_settings._rotor2_table;
+    rotor2.index = rotors_settings._rotor2_index;
+    rotor3.table = rotors_settings._rotor3_table;
+    rotor3.index = rotors_settings._rotor3_index;
 }
 
 
@@ -141,6 +157,10 @@ unsigned int Enigma::get_index_rotor(char letter, rotor rotor)
         i++;
     }
     i = (i - rotor.index)% 26;
+    if ( i<0 )
+    {
+        i = i+26;
+    }
     return i;
 }
 

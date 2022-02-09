@@ -13,20 +13,13 @@ int main()
 
 	Enigma enigma;
 
-    /*
-	string msgToCode = "HelloWorld";
-    string result = enigma.code(msgToCode);
-
-    cout << "input: " << msgToCode << "\n";
-    cout << "response: " << result << "\n";
-    cout << "decode: " << enigma.decode(result);
-    */
-    string mmm;
-    //mmm.push_back(enigma.jump_rotor('a'));
+    struct rotors_Settings rotorsSet((char*)"ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5,
+                               (char*)"ABCDEFGHIJKLMNOPQRSTUVWXYZ", 3,
+                               (char*)"ABCDEFGHIJKLMNOPQRSTUVWXYZ", 4);
+    enigma.set_rotors_settings(rotorsSet);
 
     cout << enigma.code("Hello") << endl;
-    cout << enigma.decode("IHQSX");
-
+    cout << enigma.decode("GFOQV");
 
     cout << endl;
 
