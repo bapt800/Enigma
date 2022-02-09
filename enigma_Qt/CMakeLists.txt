@@ -19,8 +19,10 @@ set(PROJECT_SOURCES
         main.cpp
         widget.cpp
         widget.h
-        ../Enigma_lib/Enigma.cpp
-        ../Enigma_lib/Enigma.hpp
+        ../Enigma_Core/Enigma.cpp
+        ../Enigma_Core/Enigma.hpp
+        ../Enigma_Core/turing.cpp
+        ../Enigma_Core/turing.hpp
 
 )
 

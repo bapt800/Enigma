@@ -1,7 +1,4 @@
-.vs/
-out/
-build-Enigma_lib-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/
-build-enigma_Qt-Desktop_Qt_6_2_2_MinGW_64_bit-Debug/
-build-enigma_test-Desktop_Qt_6_2_2_MinGW_64_bit-Debug/
 CMakeLists.txt.user
-CMakeLists.txt.user.wukeci
+
+build-Enigma_lib-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/
+build-Enigma_QT-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/
