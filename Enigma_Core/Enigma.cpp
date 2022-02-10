@@ -99,6 +99,9 @@ char Enigma::inv_jump_rotor_reverse_static(char letter)
 
 std::string Enigma::code(std::string msg)
 {
+    rotor1.index = rotors_settings._rotor1_index;
+    rotor2.index = rotors_settings._rotor2_index;
+    rotor3.index = rotors_settings._rotor3_index;
     msg = clean_text_input(msg);
     std::string msg_Return;
     for (int i =0; i<msg.size(); i++)
@@ -136,6 +139,11 @@ void Enigma::set_rotors_settings(rotors_Settings settings)
     rotor2.index = rotors_settings._rotor2_index;
     rotor3.table = rotors_settings._rotor3_table;
     rotor3.index = rotors_settings._rotor3_index;
+}
+
+rotors_Settings Enigma::get_rotors_settings()
+{
+    return rotors_settings;
 }
 
 

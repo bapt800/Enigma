@@ -71,6 +71,7 @@ public:
     std::string decode(std::string msg);
 
     void set_rotors_settings(struct rotors_Settings settings);
+    struct rotors_Settings get_rotors_settings();
 
 	static unsigned int gen_randomNumber();
     unsigned int get_index_rotor(char letter, rotor rotor);
