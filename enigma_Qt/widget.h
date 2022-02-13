@@ -11,6 +11,7 @@
 #include <string>
 
 #include "../Enigma_Core/Enigma.hpp"
+#include "../Enigma_Core/turing.hpp"
 
 class Widget : public QWidget
 {
@@ -28,6 +29,7 @@ public:
 public slots:
     void code();
     void decode();
+    void decodeTuring();
 
 private:
     Q_OBJECT
@@ -40,8 +42,11 @@ private:
     QLabel *labelRotors3;
 
     QLineEdit *inputUser;
-    QPushButton *codeinput;
-    QPushButton *decodeinput;
+    QPushButton *codeInput;
+    QPushButton *decodeInput;
+
+    QLineEdit *inputUserLitteral;
+    QPushButton *turingInput;;
 
     Enigma enigma;
 

@@ -16,13 +16,22 @@ Widget::Widget(QWidget *parent)
     inputUser = new QLineEdit();
     layoutMain->addWidget(inputUser, 1, 0, 1, 2);
 
-    codeinput = new QPushButton(QString("Code"));
-    connect(codeinput, &QPushButton::pressed, this, &Widget::code);
-    layoutMain->addWidget(codeinput, 2, 0, 1, 1);
+    codeInput = new QPushButton(QString("Code"));
+    connect(codeInput, &QPushButton::pressed, this, &Widget::code);
+    layoutMain->addWidget(codeInput, 2, 0, 1, 1);
 
-    decodeinput = new QPushButton(QString("Decode"));
-    connect(decodeinput, &QPushButton::pressed, this, &Widget::decode);
-    layoutMain->addWidget(decodeinput, 2, 1, 1, 1);
+    decodeInput = new QPushButton(QString("Decode"));
+    connect(decodeInput, &QPushButton::pressed, this, &Widget::decode);
+    layoutMain->addWidget(decodeInput, 2, 1, 1, 1);
+
+    inputUserLitteral = new QLineEdit();
+    inputUserLitteral->setText(QString("Litteral"));
+    layoutMain->addWidget(inputUserLitteral, 3, 0, 1, 1);
+
+    turingInput = new QPushButton(QString("Turing decode"));
+    connect(turingInput, &QPushButton::pressed, this, &Widget::decodeTuring);
+    layoutMain->addWidget(turingInput, 3, 1, 1, 1);
+
 }
 
 Widget::~Widget()
@@ -98,9 +107,16 @@ void Widget::decode()
 {
     QString msgBlack(inputUser->text());
     QString msgToDecode(QString::fromStdString(enigma.decode(msgBlack.toStdString())));
-    qDebug()<<msgBlack<<msgToDecode;
 
     inputUser->setText(msgToDecode);
+}
+
+void Widget::decodeTuring()
+{
+    QString msgToDecode(inputUser->text());
+    QString QSLitteral(inputUserLitteral->text());
+    QString msgWhite(QString::fromStdString(turing_decode(msgToDecode.toStdString(), enigma.get_rotors_settings(), QSLitteral.toStdString())));
+    inputUser->setText(msgWhite);
 }
 
 

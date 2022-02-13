@@ -8,6 +8,8 @@ std::string turing_decode(std::string msg, struct rotors_Settings rotorsSettings
     struct rotors_Settings settings(rotorsSettings._rotor1_table, rotorsSettings._rotor2_table, rotorsSettings._rotor3_table);
     enigma.set_rotors_settings(settings);
 
+    //litteral = clean_text_input(litteral);
+
     std::string white_msg;
     int FULL_STOP = 0;
     while (FULL_STOP < 10000)
